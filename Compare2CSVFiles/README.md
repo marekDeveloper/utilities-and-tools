@@ -9,4 +9,6 @@ Motivation for this tool: This is old way using one Excel sheet by multiple peop
 
 This utility script assumes that both CSV data files contain header cells. It will match only column with same names. If pair match for column names does not exist, those will be ignored.
 
- This tool offers selection of CSV columns where do you want to be looking for a match. It means you can select all of them or only few which are important for you.
+This tool offers selection of CSV columns where do you want to be looking for a match. It means you can select all of them or only few which are important for you.
+
+This tool does not offer files upload option, I think that can be improved later. We provide two simple CSV data file examples in "csv-data" directory.
