@@ -66,13 +66,52 @@ $headers2 = str_getcsv($file2[0]);
 // compare column titles
 // TO DO! This should be smarter and should ignore and warn about missing/additonal columns
 if ($headers1 != $headers2) {
+    print_r($headers2);
+    print_r($headers1);
     // TO DO! Better Error!
     print 'ERROR! Column Titles values does not match! TO DO - make this smarter later! <br />';
     die();
-}
+} // end if
 
-print_r($headers2);
-print_r($headers1);
+// TO DO! TO REMOVE!
+// following is short test for first column = titles in our case
+// this will need to be removed and rebuild later
+$compareColumns = 'Title';
+$compareColumnsIndex = 0;
+
+// loop through CSV data file and load values for indexes???
+$data1 = []; // this now holds only titles, needs to be multicolumn idea somehow
+foreach ($file1 as $index => $row) {
+    $rowData = str_getcsv($row);
+    //print_r($rowData);
+    $data1[] = $rowData[$compareColumnsIndex];
+} // end foreach
+
+print_r($data1);
+
+$data2 = []; // this now holds only titles, needs to be multicolumn idea somehow
+foreach ($file2 as $index => $row) {
+    $rowData = str_getcsv($row);
+    //print_r($rowData);
+    $data2[] = $rowData[$compareColumnsIndex];
+} // end foreach
+
+print_r($data2);
+
+// this is just hacking for now
+// TO DO! To make this right!
+
+$diff = array_diff($data1, $data2);
+$intersect1 = array_intersect($data1, $data2);
+$intersect2 = array_intersect($data2, $data1);
+//asort($intersect1);
+//asort($intersect2);
+
+print_r($diff);
+print_r($intersect1);
+print_r($intersect2);
+
+
 
 echo '<br />End of script!!!<br />';
 
