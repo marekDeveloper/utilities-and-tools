@@ -43,9 +43,21 @@ if ($file2 = file($file2name)) {
     $errorMsg[] = 'Unable to read Second file: ' . $file2name . '!';
 } // end if
 
-print_r($file1);
+// simple check for files
+if (!$file1 || !$file2) {
+    // TO DO! Better Error!
+    print 'ERROR! Files not loaded! <br />';
+    print_r($errorMsg);
+    die();
+} // end if
 
-echo 'here - loaded 2 files with lines: ' . "{$count1} | {$count2}<br />";
+if ( ($count1 < 2) || ($count2 < 2)) {
+    // TO DO! Better Error!
+    print 'ERROR! Each CSV data file must have at least 2 lines, duh! <br />';
+    die();
+} // end if
+
+echo 'HERE - loaded 2 files with lines: ' . "{$count1} | {$count2}. <br /><br />";
 
 // first we will look for headers - first row
 
