@@ -60,6 +60,21 @@ if ( ($count1 < 2) || ($count2 < 2)) {
 echo 'HERE - loaded 2 files with lines: ' . "{$count1} | {$count2}. <br /><br />";
 
 // first we will look for headers - first row
+$headers1 = str_getcsv($file1[0]);
+$headers2 = str_getcsv($file2[0]);
+
+// compare column titles
+// TO DO! This should be smarter and should ignore and warn about missing/additonal columns
+if ($headers1 != $headers2) {
+    // TO DO! Better Error!
+    print 'ERROR! Column Titles values does not match! TO DO - make this smarter later! <br />';
+    die();
+}
+
+print_r($headers2);
+print_r($headers1);
+
+echo '<br />End of script!!!<br />';
 
 
 ?>
