@@ -62,37 +62,22 @@ print_r($data);
 
 // this is just hacking for now
 // TO DO! To make this right!
-$diff = array_diff($data1, $data2);
-$intersect1 = array_intersect($data1, $data2);
-$intersect2 = array_intersect($data2, $data1);
-asort($intersect1);
-asort($intersect2);
+// find duplicate rows
+$duplicates_arr = array_diff_assoc($data, array_unique($data));
 
-print_r($diff);
-print_r($intersect1);
-print_r($intersect2);
+print_r($duplicates_arr);
 
 $duplicates = [];
 
-foreach ($intersect1 as $rowIndex => $columnValue) {
+foreach ($duplicates_arr as $rowIndex => $columnValue) {
     if (!isset($duplicates[$columnValue])) {
         $duplicates[$columnValue] = [];
     } // end if
 
-    $duplicates[$columnValue][] = trim($file1[$rowIndex]) . ' | Line File 1: ' . $rowIndex;
+    $duplicates[$columnValue][] = trim($file[$rowIndex]) . ' | Line File 1: ' . $rowIndex;
 }
-
-foreach ($intersect2 as $rowIndex => $columnValue) {
-    if (!isset($duplicates[$columnValue])) {
-        $duplicates[$columnValue] = [];
-    } // end if
-
-    $duplicates[$columnValue][] = trim($file2[$rowIndex]) . ' | Line File 2: ' . $rowIndex;
-}
-
 
 print_r($duplicates);
-
 
 
 echo '<br />End of script!!!<br />';
