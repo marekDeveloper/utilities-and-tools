@@ -33,7 +33,7 @@ if (!$file) {
     die();
 } // end if
 
-if ( $count1 < 2 ) {
+if ( $count < 2 ) {
     // TO DO! Better Error!
     print 'ERROR! CSV data file must have at least 2 lines, duh! <br />';
     die();
