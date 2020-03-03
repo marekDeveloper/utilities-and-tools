@@ -74,13 +74,11 @@ foreach ($duplicates_arr as $rowIndex => $columnValue) {
         $duplicates[$columnValue] = [];
     } // end if
 
-    $duplicates[$columnValue][] = trim($file[$rowIndex]) . ' | Line File 1: ' . $rowIndex;
+    $duplicates[$columnValue][] = trim($file[$rowIndex]) . ' | Line File: ' . $rowIndex;
 }
 
 print_r($duplicates);
 
-
 echo '<br />End of script!!!<br />';
-
 
 ?>
