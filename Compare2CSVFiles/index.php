@@ -63,9 +63,18 @@ echo 'HERE - loaded 2 files with lines: ' . "{$count1} | {$count2}. <br /><br />
 $headers1 = str_getcsv($file1[0]);
 $headers2 = str_getcsv($file2[0]);
 
+$headers1[0] = 'name';
+
 // compare column titles
 // TO DO! This should be smarter and should ignore and warn about missing/additonal columns
 if ($headers1 != $headers2) {
+
+    for ($i=0; $i<count($headers1); $i++) {
+        if (trim($headers1[$i]) != trim($headers2[$i])) {
+            print "Column Names Mismatch (Index: {$i}) - '{$headers1[$i]}','{$headers2[$i]}'<br />\n";
+        }
+    }
+
     print_r($headers2);
     print_r($headers1);
     // TO DO! Better Error!
